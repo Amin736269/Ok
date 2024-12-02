@@ -1,0 +1,20 @@
+def dosya_isle(dosya_yolu):
+    # Dosyayı okuma modunda açıyoruz
+    with open(dosya_yolu, 'r') as dosya:
+        # Dosya içeriğini satır satır okuyoruz
+        satirlar = dosya.readlines()
+    
+    # İçeriği işliyoruz (örneğin her satırı ters çeviriyoruz)
+    islenmis_satirlar = [satir.strip()[::-1] for satir in satirlar]
+    
+    # İşlenmiş içeriği yeni bir dosyaya yazıyoruz
+    yeni_dosya_yolu = 'islenmis_' + dosya_yolu
+    with open(yeni_dosya_yolu, 'w') as yeni_dosya:
+        for satir in islenmis_satirlar:
+            yeni_dosya.write(satir + '\n')
+    
+    print(f"İşlenmiş dosya kaydedildi: {yeni_dosya_yolu}")
+
+# Örnek kullanım
+dosya_yolu = 'ornek_dosya.txt'  # Dosyanızın yolu burada olacak
+dosya_isle(dosya_yolu)
